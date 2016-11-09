@@ -1,12 +1,12 @@
 import React from 'react';
 
 //extracting video prop from props argument.
-const VideoListItem = ({ video }) => {
+const VideoListItem = ({ video, handleVideoSelect }) => {
   const imageURL = video.snippet.thumbnails.default.url;
 
 
   return (
-    <li className='list-group-item'>
+    <li onClick={() => handleVideoSelect(video) }className='list-group-item'>
       <div className='video-list media'>
         <div className='media-left'>
           <img className='media-object' src={ imageURL }/>

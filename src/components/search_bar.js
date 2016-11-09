@@ -11,7 +11,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input
           value = { this.state.searchTerm }
           placeholder = 'Search for a video!'
