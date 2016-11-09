@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SearchBar = () => {
-  return <input />
-};
-
-export default SearchBar;
+export default class SearchBar extends Component {
+  render() {
+    return <input />
+  }
+}
