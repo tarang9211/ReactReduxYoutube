@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-//importing components
+import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 const API_KEY = 'AIzaSyBwwj4UuzrSiF3L1ajGGMl-7e5pNgeSyGc';
 
-//Step 1: create a component that will produce some HTML
-const App = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    //initializing state
+    this.state = { videos: [] };
+
+    //consuming the YT search api with a sample search
+    YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
+      //ES6 equivalent of videos: videos
+      this.setState({ videos });
+    });
+  }
+
+  render() {
+      return (
+          <div>
+            <SearchBar />
+            <VideoList videos= { this.state.videos }/>
+          </div>
+      );
+  }
 };
 
-//Step 2: take the component's generated HTMl and put it on the page
-
 /*
-*<App /> creates an instance of const App variable
+* <App /> creates an instance of const App variable
+* Functional components take in some information and return JSX
 */
 ReactDOM.render(<App />, document.querySelector('.container'));
