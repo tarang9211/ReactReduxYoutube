@@ -17,8 +17,11 @@ class App extends Component {
       selectedVideo: null
     };
 
-    //consuming the YT search api with a sample search
-    YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
+    this.videoSearch();
+  }
+
+  videoSearch(term='surfboards') {
+    YTSearch({ key: API_KEY, term: term }, (videos) => {
       //ES6 equivalent of videos: videos
       this.setState({
         videos: videos,
@@ -30,10 +33,10 @@ class App extends Component {
   render() {
       return (
           <div>
-            <SearchBar />
+            <SearchBar handleSearchTermChange={ term => this.videoSearch(term)} />
             <VideoDetail video={ this.state.selectedVideo }/>
             <VideoList
-              handleVideoSelect={ selectedVideo => this.setState({ selectedVideo }) } 
+              handleVideoSelect={ selectedVideo => this.setState({ selectedVideo }) }
               videos= { this.state.videos }/>
           </div>
       );
