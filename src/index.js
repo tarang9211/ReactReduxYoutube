@@ -6,7 +6,8 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AIzaSyBwwj4UuzrSiF3L1ajGGMl-7e5pNgeSyGc';
+//removed api key
+const API_KEY = '';
 
 class App extends Component {
   constructor(props) {
